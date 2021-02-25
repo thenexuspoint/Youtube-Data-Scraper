@@ -122,28 +122,18 @@ def getSPD(driver, url):
 # <--------
 
 # Init timer
-def _getVideoData(driver, min, max, data):
+def _getVideoData(driver, data):
     views = []
     titles = []
     likes = []
     dislikes = []
     dates = []
-
-    k = 0
-    t = random.randint(min, max)
-    while t: 
-        mins, secs = divmod(t, 60) 
-        timer = '{:02d}:{:02d}'.format(mins, secs) 
-        print(timer, end="\r") 
-        time.sleep(1) 
-        t -= 1
-    if t == 0:
-        view, title, like, dislike, date = getSPD(driver, data)
-        views.append(view)
-        titles.append(title)
-        likes.append(like)
-        dislikes.append(dislike)
-        dates.append(date)
+    view, title, like, dislike, date = getSPD(driver, data)
+    views.append(view)
+    titles.append(title)
+    likes.append(like)
+    dislikes.append(dislike)
+    dates.append(date)
   
     df = pd.DataFrame()
 
